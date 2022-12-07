@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "backend"
+version = "0.1.0"
+description = ""
+authors = ["AlexDemure"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "*"
+uvicorn = {extras = ["standard"], version = "^0.20.0"}
+structlog = "^22.3.0"
+sqlalchemy = "^1.4.44"
+alembic = "^1.8.1"
+asyncpg = "^0.27.0"
+
+[tool.poetry.group.lints.dependencies]
+black = "^22.10.0"
+mypy = "^0.991"
+flake8 = "^6.0.0"
+isort = "^5.10.1"
+
+[tool.black]
+line-length = 120
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

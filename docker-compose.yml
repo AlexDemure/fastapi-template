@@ -1,0 +1,28 @@
+version: "3.8"
+
+volumes:
+  pgdata:
+
+
+services:
+  postgres:
+    image: postgres:13.2
+    container_name: postgres
+    hostname: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    env_file: backend/.env
+
+  backend:
+    build: backend
+    container_name: backend
+    hostname: backend
+    network_mode: "host"
+    ports:
+      - "7040:7040"
+    depends_on:
+      - "postgres"
+    env_file: backend/.env
